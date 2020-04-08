@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Service;
+use App\Models\Slider;
+use App\Models\Siteinfo;
 class IndexController extends Controller
 {
     /**
@@ -13,8 +16,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $website_info = DB::table('siteinfo')->get();
-        return view('web.index',compact('website_info'));
+        $services = Service::get();
+        $website_info = Siteinfo::get();
+        $sliders = Slider::get();
+        return view('web.index',compact('website_info','sliders'));
     }
 
     /**

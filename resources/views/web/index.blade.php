@@ -6,64 +6,41 @@
 active
 @endsection
 @section('content')
+@if (count($sliders) > 0 )
     <!-- ============================
-        Slider
+        Slider  || Done
     ============================== -->
     <section id="slider2" class="slider slider-2 text-center">
       <div class="carousel owl-carousel carousel-arrows carousel-dots" data-slide="1" data-slide-md="1"
         data-slide-sm="1" data-autoplay="true" data-nav="true" data-dots="true" data-space="0" data-loop="true"
         data-speed="3000" data-transition="fade" data-animate-out="fadeOut" data-animate-in="fadeIn">
+        @foreach($sliders as $slider)
+        @if($slider->type == '1')
         <div class="slide-item align-v-h bg-overlay">
-          <div class="bg-img"><img src="assets/images/sliders/2.jpg" alt="slide img"></div>
+          <div class="bg-img"><img src="{{$slider->img}}" alt="slide img"></div>
           <div class="container">
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10 offset-xl-1">
                 <div class="slide__content">
-                  <span class="slide__subtitle">تولید انواع محصولات با کیفیت</span>
-                  <h2 class="slide__title">مشاور برای تمام نیازهای صنعتی شما!</h2>
-                  <p class="slide__desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
-                  <a href="#" class="btn btn__primary btn__hover2 mr-30">اطالاعات بیشتر</a>
-                  <a href="#" class="btn btn__white">خدمات ما</a>
+                  <span class="slide__subtitle">{{$slider->subtitle}}</span>
+                  <h2 class="slide__title">{{$slider->title}}</h2>
+                  <p class="slide__desc">{{$slider->desc}}</p>
+                  @if ($slider->btn_orange != null && $slider->btn_orange != '')
+                  <a href="{{$slider->btn_orange_link}}" class="btn btn__primary btn__hover2 mr-30">{{$slider->btn_orange}}</a>
+                  @endif
+                  @if($slider->btn_white != null && $slider->btn_white != '')
+                  <a href="{{$slider->btn_white_link}}" class="btn btn__white">{{$slider->btn_white}}</a>
+                  @endif
                 </div><!-- /.slide-content -->
               </div><!-- /.col-xl-10 -->
             </div><!-- /.row -->
           </div><!-- /.container -->
         </div><!-- /.slide-item -->
-        <div class="slide-item align-v-h bg-overlay">
-          <div class="bg-img"><img src="assets/images/sliders/5.jpg" alt="slide img"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10 offset-xl-1">
-                <div class="slide__content">
-                  <span class="slide__subtitle">پروژه های تجاری و صنعتی!</span>
-                  <h2 class="slide__title">کادر متخصص و مشاوران باتجربه </h2>
-                  <p class="slide__desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
-                  <a href="#" class="btn btn__white mr-30">خدمات ما</a>
-                  <a href="#" class="btn btn__primary">اطالاعات بیشتر</a>
-                </div><!-- /.slide-content -->
-              </div><!-- /.col-xl-10 -->
-            </div><!-- /.row -->
-          </div><!-- /.container -->
-        </div><!-- /.slide-item -->
-        <div class="slide-item align-v-h bg-overlay">
-          <div class="bg-img"><img src="assets/images/sliders/4.jpg" alt="slide img"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10 offset-xl-1">
-                <div class="slide__content">
-                  <span class="slide__subtitle">مشاور برای تمام نیازهای صنعتی شما!</span>
-                  <h2 class="slide__title">مشاور برای تمام نیازهای صنعتی شما! </h2>
-                  <p class="slide__desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
-                  <a href="#" class="btn btn__primary btn__hover2 mr-30">اطالاعات بیشتر</a>
-                  <a href="#" class="btn btn__white">خدمات ما</a>
-                </div><!-- /.slide-content -->
-              </div><!-- /.col-xl-10 -->
-            </div><!-- /.row -->
-          </div><!-- /.container -->
-        </div><!-- /.slide-item -->
+        @endif
+        @endforeach
       </div><!-- /.carousel -->
     </section><!-- /.slider -->
-
+@endif
     <!-- ========================
         Services carousel
     =========================== -->

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSiteInfo extends Migration
+class CreateSiteinfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSiteInfo extends Migration
      */
     public function up()
     {
-        Schema::create('siteinfo', function (Blueprint $table) {
+        Schema::create('siteinfos', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->text('phone');
@@ -37,6 +37,6 @@ class CreateSiteInfo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('siteinfo');
+        Schema::dropIfExists('siteinfos');
     }
 }
