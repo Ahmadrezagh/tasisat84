@@ -84,7 +84,7 @@ active
                     <img src="{{$service->img}}" alt="project img">
                   </div><!-- /.project-img -->
                   <div class="project__content">
-                    <h4 class = "project__title"> <a href="#"> {{$service->title}} </a> </h4>
+                  <h4 class = "project__title"> <a href="/service/{{$service->id}}"> {{$service->title}} </a> </h4>
                     <div class = "project__cat">
                       @foreach ($categories as $category)
                           @if($category->id == $service->cat_id)
