@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="Industic - Factory and Manufacturing Html Template">
-  <link href="assets/images/favicon/favicon.png" rel="icon">
+  <link href="/assets/images/favicon/favicon.png" rel="icon">
   <title>@yield('title') | {{$website_info[0]->name}}</title>
-  <link rel="stylesheet" href="assets/css/libraries.css">
-  <link rel="stylesheet" href="assets/css/libraries-rtl.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/libraries.css">
+  <link rel="stylesheet" href="/assets/css/libraries-rtl.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
@@ -23,8 +21,9 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="index-2.html">
-            <img src="assets/images/logo/logo-light.png" class="logo-light" alt="logo">
-            <img src="assets/images/logo/logo-dark.png" class="logo-dark" alt="logo">
+            <img src={{$website_info[0]->logo_nav}} class="logo-light" alt="logo">
+            <img src={{$website_info[0]->logo_nav}} class="logo-dark" alt="logo">
+            {{-- <img src="assets/images/logo/logo-dark.png" class="logo-dark" alt="logo"> --}}
           </a>
           <div class="header__topbar d-none d-lg-block">
             <div class="d-flex flex-wrap">
@@ -44,11 +43,11 @@
                 <li>
                   <i class="icon-clock1"></i>
                   <div>
-                    <span>ساعات کاری:</span><strong>{{$website_info[0]->work_time}}</strong>
+                    <span>ساعات کاری:</span><strong>{{$website_info[0]->time_to_work}}</strong>
                   </div>
                 </li>
               </ul>
-              <a href="request-quote.html" class="btn btn__secondary module__btn-request">
+              <a href="/request-quote" class="btn btn__secondary module__btn-request">
                 <span>درخواست مشاوره</span><i class="icon-arrow-right2"></i>
               </a>
             </div>
@@ -61,100 +60,23 @@
           <div class="container">
             <div class="collapse navbar-collapse" id="mainNavigation">
               <ul class="navbar-nav">
-                <li class="nav__item with-dropdown">
-                  <a href="index-2.html" class="dropdown-toggle nav__item-link @yield('home')">خانه</a>
-                  <i class="fa fa-angle-left" data-toggle="dropdown"></i>
-                  <ul class="dropdown-menu">
-                    <li class="nav__item"><a href="index-2.html" class="nav__item-link">اصلی</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="home-modern.html" class="nav__item-link">مدرن</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="home-classic.html" class="nav__item-link">کلاسیک</a></li>
-                    <!-- /.nav-item -->
-                  </ul><!-- /.dropdown-menu -->
-                </li><!-- /.nav-item -->
-                <li class="nav__item with-dropdown">
-                  <a href="about-us.html" class="dropdown-toggle nav__item-link">صفحات</a>
-                  <i class="fa fa-angle-left" data-toggle="dropdown"></i>
-                  <ul class="dropdown-menu">
-                    <li class="nav__item"><a href="about-us.html" class="nav__item-link">درباره ما</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="why-us.html" class="nav__item-link">چرا ما؟</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="leadership-team.html" class="nav__item-link">تیم ما</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="awards.html" class="nav__item-link">جوایز</a>
-                    </li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="pricing.html" class="nav__item-link">تعرفه ها</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="faqs.html" class="nav__item-link">پرسش و پاسخ</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="careers.html" class="nav__item-link">فرصت های شغلی</a></li>
-                    <!-- /.nav-item -->
-                  </ul><!-- /.dropdown-menu -->
-                </li><!-- /.nav-item -->
-                <li class="nav__item with-dropdown">
-                  <a href="Industries-industry-served.html" class="dropdown-toggle nav__item-link">صنایع</a>
-                  <i class="fa fa-angle-left" data-toggle="dropdown"></i>
-                  <ul class="dropdown-menu wide-dropdown-menu">
-                    <li class="nav__item">
-                      <div class="row mx-0">
-                        <div class="col-sm-6 dropdown-menu-col">
-                          <h6>خدماتی</h6>
-                          <ul class="nav flex-column">
-                            <li class="nav__item"><a class="nav__item-link"
-                                                     href="industries-single-industry.html">نفت و گاز</a>
-                            </li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link"
-                                                     href="industries-single-industry.html">ساخت و ساز و مهندسی</a>
-                            </li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link"
-                                                     href="industries-single-industry.html">مهندسی مکانیک</a>
-                            </li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link"
-                                                     href="industries-single-industry.html">صنعت شیمی</a>
-                            </li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link"
-                                                     href="industries-single-industry.html">ساخت خودرو</a>
-                            </li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link" href="industries-single-industry.html">ساخت پل</a></li>
-                            <!-- /.nav-item -->
-                          </ul>
-                        </div><!-- /.col-sm-6 -->
-                        <div class="col-sm-6 dropdown-menu-col">
-                          <h6>بخش های صنعت</h6>
-                          <ul class="nav flex-column">
-                            <li class="nav__item"><a class="nav__item-link" href="industries-single-industry.html">ماشین آلات صنعتی</a></li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link" href="industries-single-industry.html">علوم و بهداشت</a></li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link" href="industries-single-industry.html">صنعتی و شیمیایی</a></li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link" href="industries-single-industry.html">تولید برق</a></li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link" href="industries-single-industry.html">غذا و نوشیدنی</a></li> <!-- /.nav-item -->
-                            <li class="nav__item"><a class="nav__item-link" href="industries-single-industry.html">نفت و گاز</a></li>
-                            <!-- /.nav-item -->
-                          </ul>
-                        </div><!-- /.col-sm-6 -->
-                      </div><!-- /.row -->
-                    </li><!-- /.nav-item -->
-                  </ul><!-- /.dropdown-menu -->
-                </li><!-- /.nav-item -->
-                <li class="nav__item with-dropdown">
-                  <a href="blog.html" class="dropdown-toggle nav__item-link">اخبار و مدیا</a>
-                  <i class="fa fa-angle-left" data-toggle="dropdown"></i>
-                  <ul class="dropdown-menu">
-                    <li class="nav__item"><a href="blog.html" class="nav__item-link">بلاگ</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="blog-single-post.html" class="nav__item-link">مطلب بلاگ</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="case-studies-grid.html" class="nav__item-link">پروژه تحقیقاتی شبکه ای</a>
-                    </li><!-- /.nav-item -->
-                    <li class="nav__item"><a href="case-studies-carousel.html" class="nav__item-link">پروژه تحقیقاتی اسلایدر</a></li><!-- /.nav-item -->
-                    <li class="nav__item"><a href="case-studies-single.html" class="nav__item-link">مطلب پروژه تحقیقاتی</a>
-                    </li><!-- /.nav-item -->
-                  </ul><!-- /.dropdown-menu -->
+                <li class="nav__item">
+                  <a href="/" class="nav__item-link @yield('home')">خانه</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="contacs.html" class="nav__item-link">تماس با ما</a>
+                  <a href="/projects" class="nav__item-link @yield('projects')">پروژه ها</a>
+                </li><!-- /.nav-item -->
+                <li class="nav__item">
+                  <a href="/services" class="nav__item-link @yield('services')">خدمات</a>
+                </li><!-- /.nav-item -->
+                <li class="nav__item">
+                  <a href="/about-us" class="nav__item-link">درباره ما</a>
+                </li><!-- /.nav-item -->
+                <li class="nav__item">
+                  <a href="/contac-us" class="nav__item-link">تماس با ما</a>
+                </li><!-- /.nav-item -->
+                <li class="nav__item">
+                  <a href="/panel" class="nav__item-link">پنل کاربری</a>
                 </li><!-- /.nav-item -->
               </ul><!-- /.navbar-nav -->
             </div><!-- /.navbar-collapse -->
@@ -190,7 +112,7 @@
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-4 footer__widget footer__widget-about  mb-30">
               <div class="footer__widget-content">
-                <img src="assets/images/logo/logo-footer.png" alt="logo">
+              <img src={{$website_info[0]->logo_footer}} alt="logo">
                 <p>{{$website_info[0]->address}}</p>
                 <p>ایمیل: <a href="mailto:{{$website_info[0]->mail}}">{{$website_info[0]->mail}}</a></p>
                 <p><a href="tel:{{$website_info[0]->phone}}" class="font-weight-bold color-white" dir="ltr">{{$website_info[0]->phone}}</a></p>
@@ -281,9 +203,9 @@
 
   </div><!-- /.wrapper -->
 
-  <script src="assets/js/jquery-3.3.1.min.js"></script>
-  <script src="assets/js/plugins.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/plugins.js"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 
 

@@ -58,90 +58,23 @@ active
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="carousel owl-carousel carousel-dots" data-slide="3" data-slide-md="2" data-slide-sm="1"
               data-autoplay="true" data-nav="false" data-dots="true" data-space="30" data-loop="true" data-speed="700">
+              @foreach ($services as $service)
               <div class="service-item">
                 <div class="service__img">
-                  <img src="assets/images/services/1.jpg" alt="service" class="img-fluid">
+                  <img src={{$service->img}} alt="service" class="img-fluid">
                 </div><!-- /.service-img -->
                 <div class="service__content">
-                  <div class="service__icon"><i class="icon-tank-1"></i></div>
-                  <h4 class="service__title">انرژی نفت و گاز</h4>
-                  <p class="service__desc">نفت و گاز طبیعی منابع غیرقابل تجدید انرژی هستند ، مایعی که در زیر زمین یافت می شود و می تواند برای ساخت بنزین از آن استفاده کند.</p>
-                  <a href="#" class="btn btn__secondary btn__link">
+                  {{-- Random icon --}}
+                  {{-- <div class="service__icon"><i class="icon-tank-1"></i></div> --}}
+                <h4 class="service__title">{{$service->title}}</h4>
+                <p class="service__desc">{{$service->desc}}</p>
+                <a href="/service/{{$service->id}}" class="btn btn__secondary btn__link">
                     <i class="icon-arrow-right2"></i>
                     <span>ادامه مطلب</span>
                   </a>
                 </div><!-- /.service-content -->
               </div><!-- /.service-item -->
-              <div class="service-item">
-                <div class="service__img">
-                  <img src="assets/images/services/2.jpg" alt="service" class="img-fluid">
-                </div><!-- /.service-img -->
-                <div class="service__content">
-                  <div class="service__icon"><i class="icon-factory-1"></i></div>
-                  <h4 class="service__title">ساخت و ساز و مهندسی</h4>
-                  <p class="service__desc">رشته حرفه ای با طراحی ، برنامه ریزی ، ساخت و مدیریت و مدیریت زیرساخت ها مانند جاده ها ، تونل ها ، پل ها سرو کار دارد.</p>
-                  <a href="#" class="btn btn__secondary btn__link">
-                    <i class="icon-arrow-right2"></i>
-                    <span>ادامه مطلب</span>
-                  </a>
-                </div><!-- /.service-content -->
-              </div><!-- /.service-item -->
-              <div class="service-item">
-                <div class="service__img">
-                  <img src="assets/images/services/3.jpg" alt="service" class="img-fluid">
-                </div><!-- /.service-img -->
-                <div class="service__content">
-                  <div class="service__icon"><i class="icon-gears"></i></div>
-                  <h4 class="service__title">مهندسی مکانیک</h4>
-                  <p class="service__desc">اصول علم مواد برای طراحی ، تجزیه و تحلیل ، ساخت و نگهداری سیستم های مکانیکی. این یکی از قدیمی ترین روش ها است.</p>
-                  <a href="#" class="btn btn__secondary btn__link">
-                    <i class="icon-arrow-right2"></i>
-                    <span>ادامه مطلب</span>
-                  </a>
-                </div><!-- /.service-content -->
-              </div><!-- /.service-item -->
-              <div class="service-item">
-                <div class="service__img">
-                  <img src="assets/images/services/4.jpg" alt="service" class="img-fluid">
-                </div><!-- /.service-img -->
-                <div class="service__content">
-                  <div class="service__icon"><i class="icon-eco"></i></div>
-                  <h4 class="service__title">مواد شیمیایی صنعتی</h4>
-                  <p class="service__desc">مواد شیمیایی در مقادیر عظیمی و مهیم برای محصولات مختلف مورد استفاده توسط صنعت و مصرف کننده عمومی تولید می شود.</p>
-                  <a href="#" class="btn btn__secondary btn__link">
-                    <i class="icon-arrow-right2"></i>
-                    <span>ادامه مطلب</span>
-                  </a>
-                </div><!-- /.service-content -->
-              </div><!-- /.service-item -->
-              <div class="service-item">
-                <div class="service__img">
-                  <img src="assets/images/services/5.jpg" alt="service" class="img-fluid">
-                </div><!-- /.service-img -->
-                <div class="service__content">
-                  <div class="service__icon"><i class="icon-industrial-robot"></i></div>
-                  <h4 class="service__title">انرژی نفت و گاز</h4>
-                  <p class="service__desc">نفت و گاز طبیعی منابع غیرقابل تجدید انرژی هستند ، مایعی که در زیر زمین یافت می شود و می تواند برای ساخت بنزین از آن استفاده کند.</p>
-                  <a href="#" class="btn btn__secondary btn__link">
-                    <i class="icon-arrow-right2"></i>
-                    <span>ادامه مطلب</span>
-                  </a>
-                </div><!-- /.service-content -->
-              </div><!-- /.service-item -->
-              <div class="service-item">
-                <div class="service__img">
-                  <img src="assets/images/services/6.jpg" alt="service" class="img-fluid">
-                </div><!-- /.service-img -->
-                <div class="service__content">
-                  <div class="service__icon"><i class="icon-cart"></i></div>
-                  <h4 class="service__title">ساخت و ساز و مهندسی</h4>
-                  <p class="service__desc">رشته حرفه ای با طراحی ، برنامه ریزی ، ساخت و مدیریت و مدیریت زیرساخت ها مانند جاده ها ، تونل ها ، پل ها سرو کار دارد.</p>
-                  <a href="#" class="btn btn__secondary btn__link">
-                    <i class="icon-arrow-right2"></i>
-                    <span>ادامه مطلب</span>
-                  </a>
-                </div><!-- /.service-content -->
-              </div><!-- /.service-item -->
+              @endforeach
             </div><!-- /.carousel -->
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->

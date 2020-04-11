@@ -19,13 +19,13 @@ class CreateSiteinfosTable extends Migration
             $table->text('phone');
             $table->text('mail');
             $table->text('address');
-            $table->text('time to work');
+            $table->text('time_to_work');
             $table->text('facebook');
             $table->text('instagram');
             $table->text('twitter');
-            $table->text('logo-nav');
+            $table->text('logo_nav');
             $table->text('footer');
-            $table->text('logo-footer');
+            $table->text('logo_footer');
             $table->timestamps();
         });
     }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\web;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Service;
-use App\Models\Slider;
-use App\Models\Siteinfo;
-class IndexController extends Controller
+use App\Models\Category;
+use App\Models\Question;
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $services = Service::get();
-        $sliders = Slider::get();
-        return view('web.index',compact('sliders','services'));
+        //
     }
 
     /**
@@ -50,7 +48,13 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+        $service = Service::find($id);
+        $categories = Category::get();
+        $similar_services = Service::where('id','!=',$id)->get();
+        $questions = Question::where('cat_id','=',$service->cat_id)
+        ->orWhere('service_id','=',$service->id)
+        ->orWhere('type','=','service')->get();
+        return view('web.service',compact('service','categories','similar_services','questions'));
     }
 
     /**

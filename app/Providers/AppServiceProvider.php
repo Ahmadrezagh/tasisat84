@@ -3,7 +3,8 @@
 namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\Siteinfo;
+use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +26,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+        //Share site info with all views
+        $siteinfo = Siteinfo::all();
+        View::share('website_info', $siteinfo);
     }
 }
