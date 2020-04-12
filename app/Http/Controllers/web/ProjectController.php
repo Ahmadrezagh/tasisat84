@@ -4,10 +4,11 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Service;
+use App\Models\Project;
 use App\Models\Category;
 use App\Models\Question;
-class ServiceController extends Controller
+
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::get();
+        //
+        $projects = Project::get();
         $categories = Category::get();
-        return view('web.services',compact('services','categories'));
+        return view('web.projects',compact('projects','categories'));
     }
 
     /**
@@ -50,15 +52,15 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service = Service::find($id);
-        if($service){
-        $categories = Category::get();
-        $similar_services = Service::where('id','!=',$id)->get();
-        $questions = Question::where('cat_id','=',$service->cat_id)
-        ->orWhere('service_id','=',$service->id)
-        ->orWhere('type','=','service')->
-        orWhere('type','=','all')->get();
-        return view('web.service',compact('service','categories','similar_services','questions'));
+        $project = Project::find($id);
+        if($project){
+            $questions = Question::where('cat_id','=',$project->cat_id)
+            ->orWhere('project_id','=',$project->id)
+            ->orWhere('type','=','project')->
+            orWhere('type','=','all')->get();
+            $categories = Category::get();
+            $similar_projects = Project::where('id','!=',$id)->get();
+            return view('web.project',compact('project','categories','similar_projects','questions'));
         }else{
             return abort(404);
         }

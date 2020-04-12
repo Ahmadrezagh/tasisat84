@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'IndexController@index');
 Route::get('/service/{id}','web\ServiceController@show');
 Route::get('/services','web\ServiceController@index');
+
+Route::get('/project/{id}','web\ProjectController@show');
+Route::get('/projects','web\ProjectController@index');
