@@ -76,10 +76,10 @@
                   <a href="/services" class="nav__item-link @yield('services')">خدمات</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="/about-us" class="nav__item-link">درباره ما</a>
+                  <a href="/about-us" class="nav__item-link @yield('aboutus')">درباره ما</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="/contact-us" class="nav__item-link">تماس با ما</a>
+                  <a href="/contact-us" class="nav__item-link @yield('contact')">تماس با ما</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
                   <a href="/panel" class="nav__item-link">پنل کاربری</a>
@@ -149,7 +149,7 @@
                 <nav>
                   <ul class="list-unstyled">
                     @foreach ($website_info->category as $category)
-                  <li><a href="/search/{{$category->name}}">{{$category->name}}</a></li>
+                  <li><a href="/search?search={{$category->name}}">{{$category->name}}</a></li>
                     @endforeach
                   </ul>
                 </nav>

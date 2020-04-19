@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\web;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
-use App\Models\Service;
-use App\Models\Project;
-use App\Models\Slider;
 use App\Models\Siteinfo;
-class IndexController extends Controller
+class AboutUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        
-        $projects = Project::take(3)->get();
-        $services = Service::get();
-        $sliders = Slider::get();
-        return view('web.index',compact('sliders','services','projects'));
+        //
+        return view('web.aboutus');
     }
 
     /**

@@ -26,6 +26,7 @@ class CreateSiteinfosTable extends Migration
             $table->text('logo_nav');
             $table->text('footer');
             $table->text('logo_footer');
+            $table->text('aboutus_content');
             $table->timestamps();
         });
     }

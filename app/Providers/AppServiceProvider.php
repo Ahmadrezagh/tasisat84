@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         //Share site info with all views
         $siteinfo = Siteinfo::all();
         $siteinfo->category = Category::take(5)->get();
+        $siteinfo->categories = Category::all();
         View::share('website_info', $siteinfo);
     }
 }

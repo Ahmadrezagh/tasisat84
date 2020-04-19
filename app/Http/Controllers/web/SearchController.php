@@ -4,8 +4,9 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Projects;
-use App\Modesl\Services;
+use App\Models\Project;
+use App\Models\Service;
+use App\Models\Category;
 class SearchController extends Controller
 {
     /**
@@ -15,9 +16,26 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        
-        return view('web.search');
+        $search = $request->search;
+        $categories = Category::all();
+        $count = 0;
+        $cat_id = Category::where('name','like','%'.$search.'%')->pluck('id')->first();
+        $results[0] = Project::where('title','like','%'.$search.'%')->
+        orWhere('desc','like','%'.$search.'%')->
+        orWhere('content','like','%'.$search.'%')->
+        orWhere('cat_id','=',$cat_id)->
+        get();
+        $results[0]->type = 'project';
+        $results[1] = Service::where('title','like','%'.$search.'%')->
+        orWhere('desc','like','%'.$search.'%')->
+        orWhere('content','like','%'.$search.'%')->
+        orWhere('cat_id','=',$cat_id)->
+        get();
+        $results[1]->type = 'service';
+        foreach($results as $result){
+            $count += count($result);
+        }
+        return view('web.search',compact('results','categories','count'));
     }
 
     /**

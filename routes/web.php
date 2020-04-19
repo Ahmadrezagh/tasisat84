@@ -27,3 +27,5 @@ Route::post('/contact-us','web\ContactController@store');
 Route::post('/newsletter','web\NewsletterController@store');
 //Search
 Route::get('/search','web\SearchController@index');
+//About us 
+Route::get('/about-us','web\AboutUsController@index');

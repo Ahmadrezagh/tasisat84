@@ -74,11 +74,13 @@ active
             @endforeach
             
           </div><!-- /.row -->
+          @if(count($projects)>6)
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
               <a class="btn btn__primary btn__hover3 mt-20 loadMoreProjects" href="#">بیشتر</a>
             </div><!-- /.col-lg-12 -->
           </div><!-- /.row -->
+          @endif
         </div><!-- /.container -->
       </section><!-- /.projects Grid -->
   
