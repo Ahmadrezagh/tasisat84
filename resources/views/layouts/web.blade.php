@@ -14,6 +14,9 @@
   
     <!-- Include this in your blade layout -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -81,9 +84,47 @@
                 <li class="nav__item">
                   <a href="/contact-us" class="nav__item-link @yield('contact')">تماس با ما</a>
                 </li><!-- /.nav-item -->
-                <li class="nav__item">
-                  <a href="/panel" class="nav__item-link">پنل کاربری</a>
+                @if(Auth::check())
+                <li class="nav__item with-dropdown">
+                  <a href="#" class="dropdown-toggle nav__item-link @yield('panel')">پنل کاربری</a>
+                  <i class="fa fa-angle-left" data-toggle="dropdown"></i>
+                  <ul class="dropdown-menu">
+                    <li class="nav__item d-none d-lg-block">
+                      <a href="/panel" class="btn btn-primary">پنل کاربری</a>
+                    </li>
+                    <!-- /.nav-item -->
+                    <li class="nav__item d-none d-lg-block">
+                      <a class="btn btn-danger"  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        خروج
+                                    </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                      </form>
+                    </li>
+                    <li class="nav__item d-block d-lg-none">
+                      <a href="/panel" class="nav__item-link" style="color:blue" >پنل کاربری</a>
+                    </li>
+                    <!-- /.nav-item -->
+                    <li class="nav__item d-block d-lg-none">
+                      <a class="nav__item-link" style="color:red"  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        خروج
+                                    </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                      </form>
+                    </li>
+                    <!-- /.nav-item -->
+                  </ul><!-- /.dropdown-menu -->
                 </li><!-- /.nav-item -->
+                @else
+                <li class="nav__item">
+                  <a href="/panel" class="nav__item-link @yield('panel')">پنل کاربری</a>
+                </li><!-- /.nav-item -->
+                @endif
               </ul><!-- /.navbar-nav -->
             </div><!-- /.navbar-collapse -->
             <div class="navbar-modules d-none d-lg-block">
@@ -130,7 +171,7 @@
                 <p><a href="tel:{{$website_info[0]->phone}}" class="font-weight-bold color-white" dir="ltr">{{$website_info[0]->phone}}</a></p>
               </div>
             </div><!-- /.col-lg-4 -->
-            <div class="col-6 col-sm-6 col-md-3 col-lg-2 footer__widget footer__widget-nav">
+            <div class="col-6 col-sm-6 col-md-3 col-lg-2 footer__widget footer__widget-nav d-none d-lg-block">
               <h6 class="footer__widget-title">صفحات</h6>
               <div class="footer__widget-content">
                 <nav>
@@ -143,7 +184,7 @@
                 </nav>
               </div><!-- /.footer-widget-content -->
             </div><!-- /.col-lg-2 -->
-            <div class="col-6 col-sm-6 col-md-3 col-lg-2 footer__widget footer__widget-nav">
+            <div class="col-6 col-sm-6 col-md-3 col-lg-2 footer__widget footer__widget-nav d-none d-lg-block">
               <h6 class="footer__widget-title">خدمات</h6>
               <div class="footer__widget-content">
                 <nav>
@@ -155,7 +196,7 @@
                 </nav>
               </div><!-- /.footer-widget-content -->
             </div><!-- /.col-lg-2 -->
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 footer__widget footer__widget-newsletter">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 footer__widget footer__widget-newsletter d-none d-lg-block">
               <div class="footer__widget-content">
                 <h6 class="footer__widget-title">خبرنامه</h6>
                 <p>درخبرنامه ما عضو شوید و جدیدترین اخبار را در ایمیل خود دریافت کنید.</p>

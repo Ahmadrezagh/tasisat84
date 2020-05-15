@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'title','desc','content','cat_id','img'
+    ];  
 
     // 
 }
