@@ -9,7 +9,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        <h5>افزودن پرسش</h5>
+        <h5>مدیریت پرسش</h5>
           <form action="/admin/questions/edit/{{$question->id}}" method="POST">
           @csrf
           <div class="form-group">

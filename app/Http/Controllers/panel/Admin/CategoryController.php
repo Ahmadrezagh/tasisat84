@@ -4,15 +4,11 @@ namespace App\Http\Controllers\Panel\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
 use App\User;
-use App\Models\Recipt;
-class ReciptsController extends Controller
+use App\Models\Category;
+use Auth;
+class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,18 +17,17 @@ class ReciptsController extends Controller
     public function index()
     {
         if(Auth::user()->admin == 1){
-            $recs = Recipt::latest()->get();
-            return view('Panel.Admin.Recipt.Index',compact('recs'));
+        $cats = Category::get();
+        return view('Panel.Admin.Category.Index',compact('cats'));
         }else{
             return abort(404);
         }
     }
     public function show_edit($id)
     {
-        if(Auth::user()->admin == 1 && count(Recipt::where('id', '=', $id)->get())>0){
-            $rec = Recipt::where('id','=',$id)->first();
-            $users = User::get();
-            return view('Panel.Admin.Recipt.Edit',compact('rec','users'));
+        if(Auth::user()->admin == 1 && count(Category::where('id', '=', $id)->get())>0){
+            $cat = Category::where('id','=',$id)->first();
+            return view('Panel.Admin.Category.Edit',compact('cat','id'));
         }else{
             return abort(404);
         }
@@ -41,13 +36,11 @@ class ReciptsController extends Controller
     public function show_add()
     {
         if(Auth::user()->admin == 1){
-            $users = User::get();
-            return view('Panel.Admin.Recipt.Add',\compact('users'));
+            return view('Panel.Admin.Category.Add');
         }else{
             return abort(404);
         }
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -67,12 +60,11 @@ class ReciptsController extends Controller
     public function store(Request $req)
     {
         if(Auth::user()->admin == 1){
-            Recipt::create([
-                'user_id' => $req->user_id,
-                'rcp_img' => $req->filepath
+            Category::create([
+                'name' => $req->name,
             ]);
-            alert()->success(' فیش حقوقی با موفقیت ثبت شد');
-                return redirect('/admin/recs');
+            alert()->success('دسته بندی با موفقیت ثبت شد');
+                return redirect('/admin/cat');
         }else{
             return abort(404);
         }
@@ -95,15 +87,14 @@ class ReciptsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Request $req)
+    public function edit(Request $req, $id)
     {
         if(Auth::user()->admin == 1){
-            Recipt::where('id','=',$id)->update([
-                'user_id' => $req->user_id,
-                'rcp_img' => $req->filepath
+            Category::where('id','=',$id)->update([
+                'name' => $req->name,
             ]);
             alert()->success('ویرایش با موفقیت انجام شد');
-            return redirect('/admin/recs');
+            return redirect('/admin/cat');
         }else{
             return abort(404);
         }
@@ -129,11 +120,10 @@ class ReciptsController extends Controller
      */
     public function destroy($id)
     {
-        //
         if(Auth::user()->admin == 1){
-            Recipt::where('id','=',$id)->delete();
-            alert()->success(' فیش حقوقی با موفقیت حذف شد');
-                return redirect('/admin/recs');
+            Category::where('id','=',$id)->delete();
+            alert()->success('دسته بندی با موفقیت حذف شد');
+                return redirect('/admin/cat');
         }else{
             return abort(404);
         }

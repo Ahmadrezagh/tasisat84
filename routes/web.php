@@ -90,9 +90,26 @@ Route::group(['prefix' => 'admin',], function () {
     Route::post('/users/add','Panel\Admin\UsersController@store');
     Route::get('/users/edit/{id}','Panel\Admin\UsersController@show_edit');
     Route::post('/users/edit/{id}','Panel\Admin\UsersController@edit');
+    Route::get('/users/delete/{id}','Panel\Admin\UsersController@destroy');
 
-    Route::get('financial_department', 'Panel\Admin\ReciptsController@index');
+    Route::get('cat', 'Panel\Admin\CategoryController@index');
+    Route::get('/cats/add','Panel\Admin\CategoryController@show_add');
+    Route::post('/cats/add','Panel\Admin\CategoryController@store');
+    Route::get('/cats/edit/{id}','Panel\Admin\CategoryController@show_edit');
+    Route::post('/cats/edit/{id}','Panel\Admin\CategoryController@edit');
+    Route::get('/cats/delete/{id}','Panel\Admin\CategoryController@destroy');
+
+    Route::get('recs', 'Panel\Admin\ReciptsController@index');
+    Route::get('/recs/add','Panel\Admin\ReciptsController@show_add');
+    Route::post('/recs/add','Panel\Admin\ReciptsController@store');
+    Route::get('/recs/edit/{id}','Panel\Admin\ReciptsController@show_edit');
+    Route::post('/recs/edit/{id}','Panel\Admin\ReciptsController@edit');
+    Route::get('/recs/delete/{id}','Panel\Admin\ReciptsController@destroy');
+
     Route::get('send_sms',  'Panel\Admin\SMSController@index');
+    Route::post('send_sms',  'Panel\Admin\SMSController@send_sms');
+
     Route::get('settings',  'Panel\Admin\WebsiteSettingController@index');
     Route::post('settings',  'Panel\Admin\WebsiteSettingController@edit');
 });
+Route::get('/user/receipt','Panel\User\ReciptsController@index');

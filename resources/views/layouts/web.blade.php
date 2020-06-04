@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="Industic - Factory and Manufacturing Html Template">
   <link href="/assets/images/favicon/favicon.png" rel="icon">
   <title>@yield('title') | {{$website_info[0]->name}}</title>
   <link rel="stylesheet" href="/assets/css/libraries.css">
@@ -84,6 +83,7 @@
                 <li class="nav__item">
                   <a href="/contact-us" class="nav__item-link @yield('contact')">تماس با ما</a>
                 </li><!-- /.nav-item -->
+                @yield('panelx')
                 @if(Auth::check())
                 <li class="nav__item with-dropdown">
                   <a href="#" class="dropdown-toggle nav__item-link @yield('panel')">پنل کاربری</a>
@@ -103,6 +103,7 @@
                         @csrf
                       </form>
                     </li>
+                    
                     <li class="nav__item d-block d-lg-none">
                       <a href="/panel" class="nav__item-link" style="color:blue" >پنل کاربری</a>
                     </li>

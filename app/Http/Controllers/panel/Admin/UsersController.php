@@ -32,7 +32,7 @@ class UsersController extends Controller
     {
         //
         if(Auth::user()->admin == 1){
-            $users = User::where('admin','=','0')->latest()->get();
+            $users = User::latest()->get();
             return view('Panel.Admin.Users.Index',compact('users'));
         }else{
             return abort(404);
@@ -49,7 +49,7 @@ class UsersController extends Controller
     }
     public function show_edit($id)
     {
-        if(Auth::user()->admin == 1){
+        if(Auth::user()->admin == 1 && count(User::where('id','=',$id)->get())>0){
             $user = User::where('id','=',$id)->first();
             return view('Panel.Admin.Users.Edit',compact('user'));
         }else{
@@ -167,6 +167,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::user()->admin == '1' && count(User::where('id','=',$id)->get())>0){
+            User::where('id','=',$id)->delete();
+            alert()->success('کاربر با موفقیت حذف شد');
+            return back();
+        }else{
+            return abort(404);
+        }
     }
 }

@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Panel\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Auth;
+use App\User;
+use App\Models\Recipt;
 class ReciptsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,14 @@ class ReciptsController extends Controller
      */
     public function index()
     {
-        //
+        
+        if(Auth::check()){ 
+            $recs  = Recipt::where('user_id','=',Auth::id())->latest()->get();
+             return view('Panel.User.Recipt.Index',compact('recs'));
+        }else{
+            return abort(404);
+        }
+
     }
 
     /**
